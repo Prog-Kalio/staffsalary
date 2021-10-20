@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>New Practice</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css">
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+
+	<div class="container-fluid">
+
+		<div class="rows">
+			
+			<div class="col-md-12">
+				<h2>STAFF SALARY SHEET</h2>
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>S/N</th>
+							<th>Staff</th>
+							<th>Position</th>
+							<th>Basic Salary</th>
+							<th>Outstanding Loan</th>
+							<th>Bonus Received</th>
+							<th>Take Home</th>
+							<th>Computations</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr>
+							<td>1.</td>
+							<td>Prosper Ibe</td>
+							<td>CEO</td>
+							<td><input type="text" class="bs" id="bsv1"></td>
+							<td><input type="text" class="lt" id="ltv1"></td>
+							<td><input type="text" class="br" id="brv1"></td>
+							<td class="thv" id="thv1"></td>
+							<td class="btn btn-light btn-block" onclick="
+								total1('bsv1','brv1','ltv1','thv1');
+							">Evaluate</td>
+						</tr>
+
+						<tr>
+							<td>2.</td>
+							<td>Oyekunbi Adams</td>
+							<td>COO</td>
+							<td><input type="text" class="bs" id="bsv2"></td>
+							<td><input type="text" class="lt" id="ltv2"></td>
+							<td><input type="text" class="br" id="brv2"></td>
+							<td class="thv" id="thv2"></td>
+							<td class="btn btn-light btn-block" onclick="
+								total1('bsv2','brv2','ltv2','thv2');
+							">Evaluate</td>
+						</tr>
+
+						<tr>
+							<td>3.</td>
+							<td>Segun Aryuhen</td>
+							<td>Director</td>
+							<td><input type="text" class="bs" id="bsv3"></td>
+							<td><input type="text" class="lt" id="ltv3"></td>
+							<td><input type="text" class="br" id="brv3"></td>
+							<td class="thv" id="thv3"></td>
+							<td class="btn btn-light btn-block" onclick="
+								total1('bsv3','brv3','ltv3','thv3');
+							">Evaluate</td>
+						</tr>
+
+						<tr>
+							<td>4.</td>
+							<td>Matthayo Funds</td>
+							<td>Manager</td>
+							<td><input type="text" class="bs" id="bsv4"></td>
+							<td><input type="text" class="lt" id="ltv4"></td>
+							<td><input type="text" class="br" id="brv4"></td>
+							<td class="thv" id="thv4"></td>
+							<td class="btn btn-light btn-block" onclick="
+								total1('bsv4','brv4','ltv4','thv4');
+							">Evaluate</td>
+						</tr>
+
+						<tr>
+							<td>5.</td>
+							<td>Mr. Kalio</td>
+							<td>Developer</td>
+							<td><input type="text" class="bs" id="bsv5"></td>
+							<td><input type="text" class="lt" id="ltv5"></td>
+							<td><input type="text" class="br" id="brv5"></td>
+							<td class="thv" id="thv5"></td>
+							<td class="btn btn-light btn-block" onclick="
+								total1('bsv5','brv5','ltv5','thv5');
+							">Evaluate</td>
+						</tr>
+
+						<tr style="font-weight:bold" class="tr">
+							<td style="text-align:center" colspan="2">TOTAL</td>
+							<td class="btn btn-dark btn-block" onclick=" basicTotal(); bonusTotal(); newSum(); takehomeSum(); ">CALCULATE</td>
+							<td id="td1"></td>
+							<td id="td2"></td>
+							<td id="td3"></td>
+							<td id="td4"></td>
+							<td></td>
+						</tr>
+
+					</tbody>
+				</table>
+
+			</div>
+
+
+		</div>
+
+
+	</div>
+
+	
+	
+	<script type="text/javascript">
+		
+		function total1(basicSalary, bonusReceived, loanTaken, takeHome) {
+			var bsVal = document.getElementById(basicSalary).value;
+			var brVal = document.getElementById(bonusReceived).value;
+			var ltVal = document.getElementById(loanTaken).value;
+			var addition = Number(bsVal) + Number(brVal);
+			var finalValue = Number(addition) - Number(ltVal);
+			document.getElementById(takeHome).innerHTML = finalValue;
+		}
+
+		function basicTotal() {
+			var sumUp = document.getElementsByClassName('bs');
+			var bsTotal= Number(sumUp[0].value) + Number(sumUp[1].value) + Number(sumUp[2].value) + Number(sumUp[3].value) + Number(sumUp[4].value);
+								
+			document.getElementById('td1').innerHTML = '$' + bsTotal; 
+
+		}
+		
+		
+		function newSum() {
+			var newsumUp = document.getElementsByClassName('lt');
+
+			ltTotal = 0;
+			for (i = 0; i <= 4; i++) {
+				ltTotal = ltTotal + Number(newsumUp[i].value);
+			}		
+			document.getElementById('td2').innerHTML = '$' + ltTotal; 
+		}
+		
+
+		function bonusTotal() {
+			var bonusSum = document.getElementsByClassName('br');
+			var brTotal= Number(bonusSum[0].value) + Number(bonusSum[1].value) + Number(bonusSum[2].value) + Number(bonusSum[3].value) + Number(bonusSum[4].value);
+								
+			document.getElementById('td3').innerHTML = '$' + brTotal; 
+
+		}
+
+
+		function takehomeSum() {
+			var thsumUp = document.getElementsByClassName('thv');
+
+			thvTotal = 0;
+			for (i = 0; i <= 4; i++) {
+				thvTotal = thvTotal + Number(thsumUp[i].innerHTML);
+			}		
+			document.getElementById('td4').innerHTML = '$' + thvTotal; 
+		}
+
+
+	</script>
+
+</body>
+</html>
